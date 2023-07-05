@@ -37,9 +37,11 @@ export function getWallets(): Wallets {
 
     const api = Object.freeze({ register });
     try {
-        (window as WalletEventsWindow).addEventListener('wallet-standard:register-wallet', ({ detail: callback }) =>
+        (window as WalletEventsWindow).addEventListener('wallet-standard:register-wallet', ({ detail: callback }) => {
+            console.log(api);
+            console.log(callback);
             callback(api)
-        );
+        });
     } catch (error) {
         console.error('wallet-standard:register-wallet event listener could not be added\n', error);
     }
